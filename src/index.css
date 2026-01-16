@@ -13,4 +13,21 @@
   --color-red-e45: #EA5555;
   --color-red-ff9: #FF9898;
 
+  --font-family-sans: 'Plus Jakarta Sans', system-ui, sans-serif;
+}
+
+@layer utilities {
+  .hover\:bg-purple-a8a:hover {
+    background-color: var(--color-purple-a8a);
+  }
+  .hover\:bg-grey-e4e:hover {
+    background-color: var(--color-grey-e4e);
+  }
+  .hover\:bg-red-ff9:hover {
+    background-color: var(--color-red-ff9);
+  }
+}
+
+body {
+  font-family: var(--font-family-sans);
 }

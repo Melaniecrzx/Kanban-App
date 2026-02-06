@@ -192,7 +192,7 @@ recharge the batteries a little."
                             />
                             :
                             <div className=" font4 w-full border border-grey-e4e dark:border-grey-3e3 rounded-lg py-2 px-4 text-left text-dark dark:text-white bg-white dark:bg-grey-2b2">
-                                <span>{currentBoard.columns.find(col => col.id === task.columnId).name}</span>
+                                <span>{currentBoard.columns.find(col => col.id === task.columnId)?.name}</span>
                             </div>
                     }
                         {errors.columnId && (

@@ -38,10 +38,8 @@ export default function OptionsTask({ isOpen, onClose, buttonRef, onEdit, onDele
 
     return (
         <>
-            <div className="fixed inset-0 z-60" onClick={onClose} />
-
             <div
-                ref={menuRef} // ← Ajoute la ref ici
+                ref={menuRef} 
                 className="fixed z-70 bg-white dark:bg-grey-3e3 rounded-lg shadow-lg py-2 min-w-[192px]"
                 style={{
                     top: `${menuPosition.top}px`,
@@ -50,13 +48,19 @@ export default function OptionsTask({ isOpen, onClose, buttonRef, onEdit, onDele
             >
                 <button
                     className="w-full text-left px-4 py-3 text-grey-828 hover:bg-gray-100 dark:hover:bg-grey-202 cursor-pointer"
-                    onClick={onEdit}
+                    onClick={(e) => {
+                        e.stopPropagation();
+                        onEdit();
+                    }}
                 >
                     Edit Task
                 </button>
                 <button
                     className="w-full text-left px-4 py-3 text-red-e45 hover:bg-gray-100 dark:hover:bg-grey-202 cursor-pointer"
-                    onClick={onDelete}
+                    onClick={(e) => {
+                        e.stopPropagation(); 
+                        onDelete();
+                    }}
                 >
                     Delete Task
                 </button>

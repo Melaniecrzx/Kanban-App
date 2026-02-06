@@ -19,7 +19,7 @@ export default function Modal({ isOpen, onClose, title, children, isDelete = fal
                         exit={{ opacity: 0, y: -50 }}
                         transition={{ duration: 0.3 }}
                     >
-                        <DialogPanel className="w-85.75 md:w-120 flex flex-col gap-6 bg-white dark:bg-grey-2b2 p-8 rounded-2xl">
+                        <DialogPanel className="max-h-[90vh] overflow-y-auto w-85.75 md:w-120 flex flex-col gap-6 bg-white dark:bg-grey-2b2 p-8 rounded-2xl">
                             <DialogTitle className={`font4 ${isDelete ? "text-red-e45" : "text-black"} text-black dark:text-white`}>{title}</DialogTitle>
                             {children}
                         </DialogPanel>

@@ -10,7 +10,7 @@ export default function AuthPage({ mode = 'signup' }) {
                 <Logo />
             </div>
 
-            <div className="flex flex-col gap-2 justify-center bg-white dark:bg-grey-3e3 p-6 rounded-xl shadow-lg w-120">
+            <div className="flex flex-col gap-2 justify-center bg-white dark:bg-grey-3e3 p-6 rounded-xl shadow-lg w-80 md:w-120">
                 {mode === 'login' ? <LoginForm /> : <SignupForm />}
             </div>
 

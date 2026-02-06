@@ -10,7 +10,7 @@ import { useAuth } from "../../store/AuthProvider";
 export default function SignupForm() {
 
     const [loading, setLoading] = useState(false);
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, watch } = useForm();
     const [error, setError] = useState("");
     const { createUser } = useAuth();
 
@@ -96,14 +96,41 @@ export default function SignupForm() {
                             </p>
                         )}
                     </div>
+
+                    <div className="flex flex-col">
+                        <label
+                            htmlFor="confirmPassword"
+                            className="font5 font-bold text-grey-828"
+                        >
+                            Confirm Password
+                        </label>
+                        <input
+                            id="confirmPassword"
+                            type="password"
+                            placeholder="Confirm your password"
+                            className={`outline-none font5 border rounded-md px-4 py-1 text-black dark:text-white placeholder:text-grey-828 ${errors.confirmPassword ? "border-red-e45" : "border-grey-e4e"
+                                }`}
+                            {...register("confirmPassword", {
+                                required: "Password confirmation is required",
+                                validate: (value) =>
+                                    value === watch("password") || "Passwords do not match",
+                            })}
+                        />
+
+                        {errors.confirmPassword && (
+                            <p className="text-red-e45 text-sm mt-1">
+                                {errors.confirmPassword.message}
+                            </p>
+                        )}
+                    </div>
                     {error && (
                         <div className="text-red-e45">
                             {error}
                         </div>
                     )}
-                        <Button primary disabled={loading} className='full'>
-                            Sign Up
-                        </Button>
+                    <Button primary disabled={loading} className='full'>
+                        Sign Up
+                    </Button>
                 </div>
             </form>
             <p className="text-center mt-4 text-grey-828">

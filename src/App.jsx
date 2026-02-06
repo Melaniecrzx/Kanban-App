@@ -2,6 +2,7 @@ import { createBrowserRouter, RouterProvider, Navigate } from "react-router-dom"
 import AuthPage from "./pages/AuthPage";
 import Dashboard from "./pages/Dashboard";
 import { useAuth } from "./store/AuthProvider";
+import { ClipLoader } from "react-spinners";
 
 function App() {
   const { user, loading } = useAuth();
@@ -9,7 +10,11 @@ function App() {
   if (loading) {
     return (
       <div className="flex items-center justify-center h-screen">
-        <p>Loading...</p>
+        <ClipLoader
+            color="#635FC7"
+            size={50}
+            speedMultiplier={0.8}
+          />
       </div>
     );
   }

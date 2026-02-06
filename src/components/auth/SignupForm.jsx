@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import Button from "../ui/Button";
 import { Link } from "react-router-dom";
-import {getSignupErrorMessage} from "../../utils/authErrors"
+import { getSignupErrorMessage } from "../../utils/authErrors"
 import { useAuth } from "../../store/AuthProvider";
 
 export default function SignupForm() {
@@ -12,7 +12,7 @@ export default function SignupForm() {
     const [loading, setLoading] = useState(false);
     const { register, handleSubmit, formState: { errors } } = useForm();
     const [error, setError] = useState("");
-    const {createUser} = useAuth();
+    const { createUser } = useAuth();
 
 
 
@@ -20,9 +20,9 @@ export default function SignupForm() {
         if (loading) return;
         setLoading(true);
         setError("");
-        try{
-             await createUser(data.email, data.password);
-        } catch(error) {
+        try {
+            await createUser(data.email, data.password);
+        } catch (error) {
             setError(getSignupErrorMessage(error.code));
         } finally {
             setLoading(false);
@@ -31,35 +31,56 @@ export default function SignupForm() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)} className="flex">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full">
                 <div className="flex flex-col gap-4">
-                    <div>
-                        <input
-                            type="email"
-                            placeholder="Email"
-                            autoFocus
-                            className={`outline-none border w-full placeholder:text-grey-828 ${errors.email ? "border-red-e45" : "border-grey-e4e"
-                                }`}
-                            {...register("email", {
-                                required: "Email is required",
-                                pattern: {
-                                    value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
-                                    message: "Please provide a valid email address."
-                                },
-                            })}
-                        />
-                        {errors.email && (
-                            <p className="text-red-e45 text-sm mt-1">
-                                {errors.email.message}
-                            </p>
-                        )}
+                    <div className="flex flex-col gap-4">
+                        <div className="flex flex-col gap-2">
+                            <h3 className="font4 text-black dark:text-white">Create account</h3>
+                            <p className="font5 text-grey-828">Let's get you started organising your tasks!</p>
+                        </div>
+                        <div className="flex flex-col">
+                            <label
+                                htmlFor="email"
+                                className="font5 font-bold text-grey-828"
+                            >
+                                Email Addres
+                            </label>
+                            <input
+                                id='email'
+                                type="email"
+                                placeholder="mel@example.com"
+                                autoFocus
+                                className={`outline-none font5 border rounded-md px-4 py-1 text-black dark:text-whit placeholder:text-grey-828 ${errors.email ? "border-red-e45" : "border-grey-e4e"
+                                    }`}
+                                {...register("email", {
+                                    required: "Email is required",
+                                    pattern: {
+                                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i,
+                                        message: "Please provide a valid email address."
+                                    },
+                                })}
+                            />
+                            {errors.email && (
+                                <p className="text-red-e45 text-sm mt-1">
+                                    {errors.email.message}
+                                </p>
+                            )}
+                        </div>
                     </div>
 
-                    <div>
+
+                    <div className="flex flex-col">
+                        <label
+                            htmlFor="password"
+                            className="font5 font-bold text-grey-828"
+                        >
+                            Password
+                        </label>
                         <input
+                            id='password'
                             type="password"
-                            placeholder="Password"
-                            className={`outline-none border w-full placeholder:text-grey-828 ${errors.password ? "border-red-e45" : "border-grey-e4e"
+                            placeholder="At least 8 characters"
+                            className={`outline-none font5 border rounded-md px-4 py-1 text-black dark:text-white placeholder:text-grey-828 ${errors.password ? "border-red-e45" : "border-grey-e4e"
                                 }`}
                             {...register("password", {
                                 required: "Password is required",
@@ -80,22 +101,16 @@ export default function SignupForm() {
                             {error}
                         </div>
                     )}
-
-                    <div className="flex flex-col md:flex-row gap-2">
-                        <Button primary disabled={loading}>
+                        <Button primary disabled={loading} className='full'>
                             Sign Up
                         </Button>
-                        <Button secondary>
-                            Continue as a Guest
-                        </Button>
-                    </div>
                 </div>
             </form>
             <p className="text-center mt-4 text-grey-828">
                 Have an account?{' '}
                 <Link to="/login" className="text-purple-635 hover:underline">
                     Log in
-                </Link> 
+                </Link>
             </p>
         </div>
 

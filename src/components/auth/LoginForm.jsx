@@ -28,14 +28,27 @@ export default function LoginForm() {
     }
     return (
         <div className="flex flex-col gap-4">
-            <form onSubmit={handleSubmit(onSubmit)} className="flex">
+            <form onSubmit={handleSubmit(onSubmit)} className="w-full">
                 <div className="flex flex-col gap-4">
-                    <div>
+                    <div className="flex flex-col gap-2">
+                        <h3 className="font4 text-black dark:text-white">Welcome back</h3>
+                        <p className="font5 text-grey-828">Enter your credentails to get back!</p>
+                    </div>
+
+                    <div className="flex flex-col">
+                        <label
+                            htmlFor="email"
+                            className="font5 font-bold text-grey-828"
+                        >
+                            Email Addres
+                        </label>
+
                         <input
+                            id='email'
                             type="email"
-                            placeholder="Email"
+                            placeholder="mel@example.com"
                             autoFocus
-                            className={`outline-none border w-full placeholder:text-grey-828 ${errors.email ? "border-red-e45" : "border-grey-e4e"
+                            className={`outline-none font5 border rounded-md px-4 py-1 text-black dark:text-white ${errors.email ? "border-red-e45" : "border-grey-e4e"
                                 }`}
                             {...register("email", {
                                 required: "Email is required",
@@ -52,11 +65,19 @@ export default function LoginForm() {
                         )}
                     </div>
 
-                    <div>
+                    <div className="flex flex-col">
+                        <label
+                            htmlFor="password"
+                            className="font5 font-bold text-grey-828"
+                        >
+                            Password
+
+                        </label>
                         <input
+                            id="password"
                             type="password"
                             placeholder="Password"
-                            className={`outline-none border w-full placeholder:text-grey-828 ${errors.password ? "border-red-e45" : "border-grey-e4e"
+                            className={`outline-none font5 rounded-md px-4 py-1 border w-full placeholder:text-grey-828 ${errors.password ? "border-red-e45" : "border-grey-e4e"
                                 }`}
                             {...register("password", {
                                 required: "Password is required",
@@ -78,14 +99,9 @@ export default function LoginForm() {
                         </div>
                     )}
 
-                    <div className="flex flex-col md:flex-row gap-2">
-                        <Button primary disabled={loading}>
-                            Log In
-                        </Button>
-                        <Button secondary>
-                            Continue as a Guest
-                        </Button>
-                    </div>
+                    <Button primary disabled={loading} className="w-full">
+                        Log In
+                    </Button>
                 </div>
             </form>
             <p className="text-grey-828 text-center ">

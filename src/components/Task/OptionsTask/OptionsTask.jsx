@@ -27,10 +27,14 @@ export default function OptionsTask({ isOpen, onClose, buttonRef, onEdit, onDele
 
         if (isOpen) {
             document.addEventListener('mousedown', handleClickOutside);
+            document.addEventListener('touchstart', handleClickOutside); // ✅ Ajouter pour mobile
+
         }
 
         return () => {
             document.removeEventListener('mousedown', handleClickOutside);
+            document.removeEventListener('touchstart', handleClickOutside); // ✅ Ajouter
+
         };
     }, [isOpen, onClose, buttonRef]);
 
@@ -39,7 +43,7 @@ export default function OptionsTask({ isOpen, onClose, buttonRef, onEdit, onDele
     return (
         <>
             <div
-                ref={menuRef} 
+                ref={menuRef}
                 className="fixed z-70 bg-white dark:bg-grey-3e3 rounded-lg shadow-lg py-2 min-w-[192px]"
                 style={{
                     top: `${menuPosition.top}px`,
@@ -48,8 +52,12 @@ export default function OptionsTask({ isOpen, onClose, buttonRef, onEdit, onDele
             >
                 <button
                     className="w-full text-left px-4 py-3 text-grey-828 hover:bg-gray-100 dark:hover:bg-grey-202 cursor-pointer"
-                    onClick={(e) => {
-                        e.stopPropagation();
+                    onMouseDown={(e) => {
+                        e.preventDefault();
+                        onEdit();
+                    }}
+                    onTouchEnd={(e) => {
+                        e.preventDefault();
                         onEdit();
                     }}
                 >
@@ -57,8 +65,12 @@ export default function OptionsTask({ isOpen, onClose, buttonRef, onEdit, onDele
                 </button>
                 <button
                     className="w-full text-left px-4 py-3 text-red-e45 hover:bg-gray-100 dark:hover:bg-grey-202 cursor-pointer"
-                    onClick={(e) => {
-                        e.stopPropagation(); 
+                    o onMouseDown={(e) => {
+                        e.preventDefault();
+                        onDelete();
+                    }}
+                    onTouchEnd={(e) => {
+                        e.preventDefault();
                         onDelete();
                     }}
                 >

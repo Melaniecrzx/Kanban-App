@@ -1,19 +1,23 @@
 import Modal from "../../ui/Modal"
 import IconOptions from "../../Icons/IconOptions";
-import { useState, useRef, useMemo } from "react";
+import { useState, useRef, useMemo, useEffect } from "react";
 import OptionsTask from "../OptionsTask/OptionsTask";
 import EditTask from "../EditTask/EditTask";
 import DeleteTask from "../DeleteTask/DeleteTask";
 import { useBoards } from "../../../store/BoardProvider";
 import { Listbox, ListboxButton, ListboxOption, ListboxOptions } from "@headlessui/react";
 
-export default function TaskDetails({ isOpen, onClose, task, subtasksCompletedCounter }) {
+export default function TaskDetails({ isOpen, onClose, task, subtasksCompletedCounter, onEdit, onDelete }) {
     const [isOptionsOpen, setIsOptionsOpen] = useState(false);
-    const [isEditTaskOpen, setIsEditTaskOpen] = useState(false);
-    const [isDeleteTaskOpen, setIsDeleteTaskOpen] = useState(false)
     const buttonRef = useRef(null);
 
     const { currentBoard, changeTask, toggleSubtask } = useBoards();
+
+    useEffect(() => {
+        if (!isOpen) {
+            setIsOptionsOpen(false);
+        }
+    }, [isOpen])
 
     const columnName = useMemo(
         () => currentBoard?.columns?.find(col => col.id === task.columnId)?.name,
@@ -63,7 +67,7 @@ export default function TaskDetails({ isOpen, onClose, task, subtasksCompletedCo
                             className="cursor-pointer"
                             onClick={() => setIsOptionsOpen(!isOptionsOpen)} // ← Toggle au lieu de true
                         >
-                            <IconOptions isOpen={isOptionsOpen}/>
+                            <IconOptions isOpen={isOptionsOpen} />
                         </button>
                     </div>
                 }
@@ -144,28 +148,19 @@ export default function TaskDetails({ isOpen, onClose, task, subtasksCompletedCo
                     onClose={() => setIsOptionsOpen(false)}
                     buttonRef={buttonRef}
                     task={task}
-                    onEdit={() => { // ✅ Callback pour ouvrir EditTask
+                    onEdit={() => {
                         setIsOptionsOpen(false);
-                        setIsEditTaskOpen(true);
+                        onClose();
+                        onEdit();
                     }}
                     onDelete={() => {
                         setIsOptionsOpen(false);
-                        setIsDeleteTaskOpen(true);
+                        onClose();
+                        onDelete(); 
                     }}
                 />
             )}
 
-            <EditTask
-                isOpen={isEditTaskOpen}
-                onClose={() => setIsEditTaskOpen(false)}
-                task={task}
-            />
-
-            <DeleteTask
-                isOpen={isDeleteTaskOpen}
-                onClose={() => setIsDeleteTaskOpen(false)}
-                task={task}
-            />
         </>
     )
 }

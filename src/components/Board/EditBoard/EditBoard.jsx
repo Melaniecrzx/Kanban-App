@@ -104,7 +104,7 @@ export default function EditBoard({ isOpen, onClose }) {
                                 {fields.map((field, index) => {
                                     const isExisting = !!field.id;
                                     const taskCount = isExisting
-                                        ? currentBoard.columns.find(c => c.id === field.id)?.tasks?.length || 0
+                                        ? currentBoard?.columns?.find(c => c.id === field.id)?.tasks?.length || 0
                                         : 0;
 
                                     return (

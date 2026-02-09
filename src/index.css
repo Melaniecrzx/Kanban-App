@@ -78,3 +78,10 @@ body {
   font-family: var(--font-family-sans);
 }
 
+.dark input[type="password"]::-webkit-textfield-decoration-container {
+    color: white;
+}
+
+.dark input[type="password"]::-webkit-credentials-auto-fill-button {
+    filter: invert(1);
+}

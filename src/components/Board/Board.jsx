@@ -5,7 +5,7 @@ import Button from "../ui/Button";
 import ColumnList from "../Column/ColumnList/ColumnList";
 import { useMemo, useState, useEffect } from "react";
 import AddColumn from "../Column/AddColumn/AddColumn";
-import { DndContext, closestCenter, PointerSensor, useSensor, useSensors, DragOverlay } from "@dnd-kit/core";
+import { DndContext, closestCenter, useSensor, useSensors, DragOverlay, MouseSensor, TouchSensor } from "@dnd-kit/core";
 import { arrayMove } from "@dnd-kit/sortable";
 
 export default function Board() {
@@ -16,11 +16,8 @@ export default function Board() {
     const [isDesktop, setIsDesktop] = useState(window.innerWidth >= 768);
     const [activeTask, setActiveTask] = useState(null);
 
-    // État local pour le réordonnancement visuel
     const [localColumns, setLocalColumns] = useState(currentBoard?.columns || []);
 
-
-    // Synchroniser avec currentBoard quand il change
     useEffect(() => {
         setLocalColumns(currentBoard?.columns || []);
     }, [currentBoard?.columns]);
@@ -38,9 +35,15 @@ export default function Board() {
     );
 
     const sensors = useSensors(
-        useSensor(PointerSensor, {
+        useSensor(MouseSensor, {
             activationConstraint: {
                 distance: 8,
+            },
+        }),
+         useSensor(TouchSensor, {
+            activationConstraint: {
+                delay: 250,
+                tolerance: 5
             },
         })
     );

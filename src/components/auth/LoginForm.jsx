@@ -77,7 +77,7 @@ export default function LoginForm() {
                             id="password"
                             type="password"
                             placeholder="Password"
-                            className={`outline-none font5 rounded-md px-4 py-1 border w-full placeholder:text-grey-828 ${errors.password ? "border-red-e45" : "border-grey-e4e"
+                            className={`outline-none font5 dark:text-white rounded-md px-4 py-1 border w-full placeholder:text-grey-828 ${errors.password ? "border-red-e45" : "border-grey-e4e"
                                 }`}
                             {...register("password", {
                                 required: "Password is required",

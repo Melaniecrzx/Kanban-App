@@ -80,7 +80,7 @@ export default function SignupForm() {
                             id='password'
                             type="password"
                             placeholder="At least 8 characters"
-                            className={`outline-none font5 border rounded-md px-4 py-1 text-black dark:text-white placeholder:text-grey-828 ${errors.password ? "border-red-e45" : "border-grey-e4e"
+                            className={`outline-none font5 border dark:text-white rounded-md px-4 py-1 text-black  placeholder:text-grey-828 ${errors.password ? "border-red-e45" : "border-grey-e4e"
                                 }`}
                             {...register("password", {
                                 required: "Password is required",
@@ -108,7 +108,7 @@ export default function SignupForm() {
                             id="confirmPassword"
                             type="password"
                             placeholder="Confirm your password"
-                            className={`outline-none font5 border rounded-md px-4 py-1 text-black dark:text-white placeholder:text-grey-828 ${errors.confirmPassword ? "border-red-e45" : "border-grey-e4e"
+                            className={`outline-none font5 border dark:text-white rounded-md px-4 py-1 text-black placeholder:text-grey-828 ${errors.confirmPassword ? "border-red-e45" : "border-grey-e4e"
                                 }`}
                             {...register("confirmPassword", {
                                 required: "Password confirmation is required",

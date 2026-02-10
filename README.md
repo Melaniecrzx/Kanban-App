@@ -8,10 +8,13 @@ allowing you to create and organize projects via drag & drop. Inspired by the
 ## Table of contents
 
 - [Overview](#overview)
-- [Demo & Screenshots](#demo)
-- [Tech Stack](#tech-stack)
-- [Features](#features)
-- [Links](#links)
+- [Demo & Screenshots](#-demo--screenshots)
+- [Tech Stack](#--tech-stack)
+- [Features](#-features)
+- [Links](#-links)
+- [What I Learned](#-what-i-learned)
+- [Author](#-author)
+
 
 ## Overview
 
@@ -51,11 +54,11 @@ This project is a solution to the Kanban task management web app challenge on Fr
 
 - **Frontend:** React + Tailwind CSS
 - **Backend:** Firebase (Authentication + Firestore)
-- **Fonctionnalités:** Drag & Drop, Dark Mode, Responsive Design
+- **Features:** Drag & Drop, Dark Mode, Responsive Design
 
 
 ## ✨ Features
-
+  
 - 🔐 **Complete Authentication System** with Firebase
 - 📋 **Board Management** - Create, edit, and delete boards
 - 📊 **Customizable Columns** - Flexible workflow organization

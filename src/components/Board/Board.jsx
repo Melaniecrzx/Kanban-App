@@ -40,7 +40,7 @@ export default function Board() {
                 distance: 8,
             },
         }),
-         useSensor(TouchSensor, {
+        useSensor(TouchSensor, {
             activationConstraint: {
                 delay: 250,
                 tolerance: 5
@@ -60,6 +60,9 @@ export default function Board() {
         const { active, over } = e;
 
         if (!over) return;
+
+        if (active.id === over.id) return;
+
 
         setLocalColumns(prevColumns => {
             // ✅ Déterminer targetColumnId

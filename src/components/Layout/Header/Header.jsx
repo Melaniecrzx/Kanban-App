@@ -22,7 +22,7 @@ export default function Header() {
                 <Logo />
             </div>
 
-            <div className="flex justify-between items-center flex-1 px-4 md:px-8 py-6">
+            <div className="flex justify-between gap-2 items-center flex-1 px-4 md:px-8 py-6">
                 <div className="flex gap-2 items-center">
                     <div className="md:hidden">
                         <Logo />

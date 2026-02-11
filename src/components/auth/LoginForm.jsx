@@ -40,7 +40,7 @@ export default function LoginForm() {
                             htmlFor="email"
                             className="font5 font-bold text-grey-828"
                         >
-                            Email Addres
+                            Email Address
                         </label>
 
                         <input

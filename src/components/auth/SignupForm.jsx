@@ -43,14 +43,14 @@ export default function SignupForm() {
                                 htmlFor="email"
                                 className="font5 font-bold text-grey-828"
                             >
-                                Email Addres
+                                Email Address
                             </label>
                             <input
                                 id='email'
                                 type="email"
                                 placeholder="mel@example.com"
                                 autoFocus
-                                className={`outline-none font5 border rounded-md px-4 py-1 text-black dark:text-whit placeholder:text-grey-828 ${errors.email ? "border-red-e45" : "border-grey-e4e"
+                                className={`outline-none font5 border rounded-md px-4 py-1 text-black dark:text-white placeholder:text-grey-828 ${errors.email ? "border-red-e45" : "border-grey-e4e"
                                     }`}
                                 {...register("email", {
                                     required: "Email is required",

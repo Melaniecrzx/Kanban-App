@@ -82,7 +82,9 @@ This project is a solution to the Kanban task management web app challenge on Fr
 
 ## 👤 Author
 
-- GitHub - [@Melaniecrzx](https://github.com/Melaniecrzx) 
+- GitHub - [@Melaniecrzx](https://github.com/Melaniecrzx)
+- Portfolio - [https://portfolio-melaniecrzx.vercel.app](https://portfolio-melaniecrzx.vercel.app)
+
 
 
 
